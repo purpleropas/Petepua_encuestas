@@ -4,14 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Encuesta sobre Gatos en Bolivia</title>
+
+  <!-- Meta información para confianza -->
+  <meta name="description" content="Encuesta anónima y sin fines comerciales para conocer la situación de los gatos en Bolivia.">
+  <meta name="author" content="Proyecto PetePua Encuestas">
+  
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #fdfdfd;
       margin: 0;
-      padding: 0;
-      color: #333;
       padding-top: 80px;
+      color: #333;
     }
 
     header {
@@ -19,7 +23,6 @@
       border-bottom: 2px solid #e0582c;
       padding: 15px 30px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
       position: fixed;
       top: 0;
@@ -59,8 +62,14 @@
 
     h2 {
       text-align: center;
-      color: #444;
-      margin-bottom: 25px;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 30px;
     }
 
     .survey {
@@ -68,8 +77,6 @@
       padding: 25px;
       border: 2px solid #e0582c;
       border-radius: 10px;
-      margin-top: 40px;
-      font-family: "Poppins", sans-serif !important;
     }
 
     .question {
@@ -77,10 +84,9 @@
     }
 
     .question label {
+      font-weight: bold;
       display: block;
       margin-bottom: 8px;
-      font-weight: bold;
-      color: #333;
     }
 
     .question input,
@@ -88,17 +94,9 @@
     .question select {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ddd;
       border-radius: 6px;
+      border: 1px solid #ddd;
       font-size: 0.95rem;
-      transition: border-color 0.2s ease;
-    }
-
-    .question input:focus,
-    .question textarea:focus,
-    .question select:focus {
-      border-color: #e0582c;
-      outline: none;
     }
 
     .options {
@@ -118,61 +116,70 @@
       color: #fff;
       border: none;
       border-radius: 50px;
-      font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .submit-btn button:hover {
-      background-color: #c64720;
     }
 
     .mensaje-exito {
-      text-align: center;
-      color: #e0582c;
-      font-weight: bold;
-      margin-top: 20px;
       display: none;
-      animation: fadeIn 0.5s ease-in-out;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #e0582c;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .legal {
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: #555;
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
     }
 
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 30px;
+    }
   </style>
 </head>
+
 <body>
 
 <header>
-  <a href="https://petepua.com/" target="_blank">
+  <a href="https://petepua.com/">
     <img src="img/cropped-logo-cabecera-5.png" alt="PetePua Logo">
     <h1>PetePua Encuestas</h1>
   </a>
 </header>
 
 <div class="container">
-  <h2>ENCUESTA PARA AYUDAR A LOS GATOS DE BOLIVIA 🐾</h2>
+
+  <h2>Encuesta para ayudar a los gatos de Bolivia 🐾</h2>
+  <p class="intro">
+    Encuesta anónima y voluntaria. No se solicitan datos personales ni información sensible.
+  </p>
 
   <div class="survey">
     <form id="encuesta-form">
+
       <div class="question">
-        <label for="q1">1. ¿Cuál cree que es el principal problema que enfrentan los gatos en Bolivia?</label>
-        <select id="q1" name="q1" required>
+        <label>1. ¿Cuál cree que es el principal problema que enfrentan los gatos en Bolivia?</label>
+        <select name="q1" required>
           <option value="">Selecciona una opción</option>
           <option value="falta de alimentos">Falta de alimentos</option>
           <option value="falta de atención veterinaria">Falta de atención veterinaria</option>
           <option value="abandono">Abandono</option>
           <option value="maltrato">Maltrato</option>
-          <option value="otro">Otro (especificar abajo)</option>
+          <option value="otro">Otro</option>
         </select>
-        <textarea id="q1_other" name="q1_other" rows="2" placeholder="Especifica si seleccionaste 'otro'"></textarea>
       </div>
 
       <div class="question">
-        <label for="q2">2. ¿Ha adoptado o considerado adoptar un gato?</label>
+        <label>2. ¿Ha adoptado o considerado adoptar un gato?</label>
         <div class="options">
           <label><input type="radio" name="q2" value="si" required> Sí</label>
           <label><input type="radio" name="q2" value="no"> No</label>
@@ -181,33 +188,58 @@
       </div>
 
       <div class="question">
-        <label for="q3">3. ¿Cree que las campañas de esterilización son efectivas?</label>
+        <label>3. ¿Cree que las campañas de esterilización son efectivas?</label>
         <div class="options">
           <label><input type="radio" name="q3" value="si" required> Sí</label>
           <label><input type="radio" name="q3" value="no"> No</label>
-          <label><input type="radio" name="q3" value="no_esta_seguro"> No está seguro</label>
+          <label><input type="radio" name="q3" value="no_seguro"> No está seguro</label>
         </div>
       </div>
 
       <div class="question">
-        <label for="q4">4. ¿Qué medidas cree que deberían tomarse para mejorar el bienestar de los gatos callejeros?</label>
-        <textarea id="q4" name="q4" rows="4" required></textarea>
+        <label>4. ¿Qué medidas cree que deberían tomarse?</label>
+        <textarea name="q4" rows="3" required></textarea>
       </div>
 
       <div class="question">
-        <label for="q5">5. ¿Cómo cree que la comunidad puede contribuir a la solución de estos problemas?</label>
-        <textarea id="q5" name="q5" rows="4" required></textarea>
+        <label>5. ¿Cómo puede contribuir la comunidad?</label>
+        <textarea name="q5" rows="3" required></textarea>
       </div>
 
       <div class="submit-btn">
-        <button type="submit">Enviar Encuesta</button>
+        <button type="submit">Enviar encuesta</button>
       </div>
 
       <p class="mensaje-exito" id="mensaje-exito">
-        Gracias por su respuesta, los gatitos te lo agradecerán 🧡
+        Gracias por participar 🧡
       </p>
+
     </form>
   </div>
+
+  <div class="legal">
+    <strong>Aviso legal y privacidad</strong>
+    <p>
+      Este sitio es un proyecto independiente de carácter educativo y social.
+      No está afiliado ni representa a ninguna empresa, red social u organización gubernamental.
+    </p>
+    <p>
+      La encuesta es completamente anónima. No se recopilan contraseñas,
+      datos bancarios ni información personal sensible.
+      Las respuestas se utilizan únicamente con fines estadísticos y de concienciación.
+    </p>
+    <p>
+      El envío del formulario se realiza mediante el servicio seguro Formspree.
+    </p>
+    <p>
+      Contacto: contacto@petepua.com
+    </p>
+  </div>
+
+  <footer>
+    © 2026 · Proyecto PetePua Encuestas · Uso educativo y social
+  </footer>
+
 </div>
 
 <script>
@@ -230,10 +262,10 @@
         form.reset();
         mensaje.style.display = 'block';
       } else {
-        alert('Hubo un error al enviar la encuesta. Intenta nuevamente.');
+        alert('Error al enviar la encuesta.');
       }
-    } catch (error) {
-      alert('Error de conexión. Inténtalo más tarde.');
+    } catch {
+      alert('Error de conexión.');
     }
   });
 </script>
