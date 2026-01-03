@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Encuesta sobre Gatos en Bolivia</title>
 
-  <!-- Meta información para confianza -->
   <meta name="description" content="Encuesta anónima y sin fines comerciales para conocer la situación de los gatos en Bolivia.">
   <meta name="author" content="Proyecto PetePua Encuestas">
-  
+
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -107,7 +106,7 @@
 
     .submit-btn {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 20px;
     }
 
     .submit-btn button {
@@ -126,6 +125,13 @@
       text-align: center;
       font-weight: bold;
       color: #e0582c;
+    }
+
+    .aviso-mantenimiento {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 15px;
     }
 
     .legal {
@@ -168,47 +174,52 @@
 
       <div class="question">
         <label>1. ¿Cuál cree que es el principal problema que enfrentan los gatos en Bolivia?</label>
-        <select name="q1" required>
+        <select required>
           <option value="">Selecciona una opción</option>
-          <option value="falta de alimentos">Falta de alimentos</option>
-          <option value="falta de atención veterinaria">Falta de atención veterinaria</option>
-          <option value="abandono">Abandono</option>
-          <option value="maltrato">Maltrato</option>
-          <option value="otro">Otro</option>
+          <option>Falta de alimentos</option>
+          <option>Falta de atención veterinaria</option>
+          <option>Abandono</option>
+          <option>Maltrato</option>
+          <option>Otro</option>
         </select>
       </div>
 
       <div class="question">
         <label>2. ¿Ha adoptado o considerado adoptar un gato?</label>
         <div class="options">
-          <label><input type="radio" name="q2" value="si" required> Sí</label>
-          <label><input type="radio" name="q2" value="no"> No</label>
-          <label><input type="radio" name="q2" value="tal_vez"> Tal vez</label>
+          <label><input type="radio" name="q2" required> Sí</label>
+          <label><input type="radio" name="q2"> No</label>
+          <label><input type="radio" name="q2"> Tal vez</label>
         </div>
       </div>
 
       <div class="question">
         <label>3. ¿Cree que las campañas de esterilización son efectivas?</label>
         <div class="options">
-          <label><input type="radio" name="q3" value="si" required> Sí</label>
-          <label><input type="radio" name="q3" value="no"> No</label>
-          <label><input type="radio" name="q3" value="no_seguro"> No está seguro</label>
+          <label><input type="radio" name="q3" required> Sí</label>
+          <label><input type="radio" name="q3"> No</label>
+          <label><input type="radio" name="q3"> No está seguro</label>
         </div>
       </div>
 
       <div class="question">
         <label>4. ¿Qué medidas cree que deberían tomarse?</label>
-        <textarea name="q4" rows="3" required></textarea>
+        <textarea rows="3" required></textarea>
       </div>
 
       <div class="question">
         <label>5. ¿Cómo puede contribuir la comunidad?</label>
-        <textarea name="q5" rows="3" required></textarea>
+        <textarea rows="3" required></textarea>
       </div>
 
       <div class="submit-btn">
         <button type="submit">Enviar encuesta</button>
       </div>
+
+      <p class="aviso-mantenimiento">
+        ⚠️ El formulario está en mantenimiento.  
+        Las respuestas no se almacenan temporalmente.
+      </p>
 
       <p class="mensaje-exito" id="mensaje-exito">
         Gracias por participar 🧡
@@ -224,12 +235,8 @@
       No está afiliado ni representa a ninguna empresa, red social u organización gubernamental.
     </p>
     <p>
-      La encuesta es completamente anónima. No se recopilan contraseñas,
-      datos bancarios ni información personal sensible.
-      Las respuestas se utilizan únicamente con fines estadísticos y de concienciación.
-    </p>
-    <p>
-      El envío del formulario se realiza mediante el servicio seguro Formspree.
+      La encuesta es anónima y no recopila información sensible.
+      Su único fin es informativo y de concienciación.
     </p>
     <p>
       Contacto: contacto@petepua.com
@@ -246,27 +253,9 @@
   const form = document.getElementById('encuesta-form');
   const mensaje = document.getElementById('mensaje-exito');
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch('https://formspree.io/f/mqayyvpa', {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        form.reset();
-        mensaje.style.display = 'block';
-      } else {
-        alert('Error al enviar la encuesta.');
-      }
-    } catch {
-      alert('Error de conexión.');
-    }
+    mensaje.style.display = 'block';
   });
 </script>
 
